@@ -9,7 +9,7 @@ public abstract class AbstractDAOFactory {
 	public abstract ProdutoDAO createProdutoDAO();
 
 	public abstract ClienteDAO createClienteDAO();
-	
+
 	public abstract PedidoDAO createPedidoDAO();
 
 	public static AbstractDAOFactory getFactory() {
@@ -26,6 +26,8 @@ public abstract class AbstractDAOFactory {
 				return new RBDDAOFactory();
 			} else if ("XML".equalsIgnoreCase(type)) {
 				return new XMLDAOFactory();
+			} else if ("MongoDB".equalsIgnoreCase(type)) {
+				return new MongoDBDAOFactory();
 			} else {
 				throw new RuntimeException("Tipo não suportado :" + type);
 			}
